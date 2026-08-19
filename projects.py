@@ -7,16 +7,15 @@
  
 PROJECTS = [
     {
-        "titulo": "Barreras de Ahorro en la Juventud Brasileña",
+        "titulo": "Brechas de Ahorro e Inclusión Financiera en Brasil",
         "categoria": "BI",
         "resumen": (
-            "Análisis de 144.000+ encuestas individuales del Global Findex (Banco Mundial) "
-            "sobre inclusión financiera en Brasil, con ponderación poblacional."
+            "Análisis de 144.000+ encuestas del Global Findex (Banco Mundial) sobre inclusión "
+            "financiera en Brasil, aplicando ponderación poblacional y controles de calidad sobre los datos."
         ),
         "hallazgo_clave": (
-        "El género es una barrera más pesada que la pobreza: un hombre joven en vulnerabilidad "
-        "extrema (Q1) ahorra el 63.9%, superando a la mujer del estrato más rico (Q5), "
-        "quien alcanza solo el 53.2% debido a penalizaciones por Sobrecarga Cognitiva."
+        "La brecha de ahorro por género alcanza el 28,3%, casi el mismo impacto que la brecha por ingreso. "
+        "Además, quienes tienen acceso a billeteras digitales ahorran 42 puntos porcentuales más."
         ),
         "imagen": "assets/Interseccionalidad.png",
         "stack": ["Python", "Pandas", "Matplotlib/Seaborn"],
@@ -25,15 +24,15 @@ PROJECTS = [
     },
     {
         "titulo": "Modelo Predictivo de Propensión de Compra",
-        "categoria": "BI",
+        "categoria": "Data Science",
         "imagen": "assets/propension_compra.png",  
         "resumen": (
             "Pipeline de Random Forest sobre 300K+ usuarios de e-commerce para predecir "
             "probabilidad de compra, con prevención estricta de data leakage."
         ),
         "hallazgo_clave": (
-            "ROC-AUC de 0.81 y reducción del 89% en falsos positivos mediante optimización "
-            "del umbral de decisión."
+            "El modelo redujo un 89% los falsos positivos y mantuvo la detección del 47% de los "
+            "compradores reales dentro de un umbral operativo para el equipo comercial."
         ),
         "stack": ["Python", "Scikit-learn", "Pandas"],
         "github_url": "https://github.com/Matias-Fuentes1/marketing-data-science-project",  
@@ -48,8 +47,8 @@ PROJECTS = [
             "y período en un negocio retail."
         ),
         "hallazgo_clave": (
-            "El 98.3% del revenue se concentra en el Top 10 de productos; 3 subcategorías "
-            "generan $1.39M en pérdidas con márgenes de hasta -14%."
+            "Se detectaron $1.39M en pérdidas sobre $64.9M de revenue, concentradas en tres "
+            "subcategorías con márgenes de hasta -14%; el revenue creció 33% mientras el profit cayó 75%."
         ),
         "stack": ["Microsoft Excel", "DAX", "SQL"],
         "github_url": "https://github.com/Matias-Fuentes1/sales-performance-excel-AdventureWorks",  
@@ -64,8 +63,8 @@ PROJECTS = [
             "y la performance de canales de adquisición sobre 360K+ sesiones."
         ),
         "hallazgo_clave": (
-            "El 78% de los usuarios abandona antes de ver un producto; Referral es el "
-            "canal más eficiente (1.66% CVR) frente a Paid Search, el menos eficiente (0.98%)."
+            "Cerca del 80% de los usuarios abandona antes de llegar al carrito, mientras Paid Search "
+            "rinde 27% por debajo del promedio del sitio."
         ),
         "stack": ["BigQuery", "SQL", "Looker Studio", "GA4"],
         "github_url": "https://github.com/Matias-Fuentes1/marketing-infrastructure-funnel-audit",  # TODO
@@ -80,8 +79,9 @@ PROJECTS = [
             "analizar cohortes de retención sobre +500K transacciones."
         ),
         "hallazgo_clave": (
-            "La retención cae del 100% al ~20% entre la primera y segunda compra: "
-            "el primer mes es la ventana crítica."
+            "La retención cae del 100% a cerca del 20% en el primer mes. Aunque las cancelaciones "
+            "representan el 17% de los pedidos, explican solo el 2% de la pérdida de ingresos: "
+            "el foco debe estar en los clientes de mayor valor."
         ),
         "stack": ["BigQuery", "SQL", "Power BI"],
         "github_url": "https://github.com/Matias-Fuentes1/ecommerce-data-warehouse-sql",  
