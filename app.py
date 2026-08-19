@@ -60,17 +60,17 @@ styles_path = Path(__file__).parent / "styles.css"
 st.markdown(f"<style>{styles_path.read_text()}</style>", unsafe_allow_html=True)
 
 
-st.markdown('<div class="topline"><span>MF / BI + Marketing Analytics</span><span>Olavarría, AR · Disponible para proyectos</span></div>', unsafe_allow_html=True)
-st.markdown('<h1 class="hero-title">De datos complejos a decisiones que importan.</h1>', unsafe_allow_html=True)
+st.markdown('<div class="topline"><span>MF / BI · Marketing Analytics</span><span>Olavarría, AR · Disponible para proyectos</span></div>', unsafe_allow_html=True)
+hero_title, hero_note = st.columns([1.45, 1], gap="large")
+with hero_title:
+    st.markdown('<h1 class="hero-title">De datos complejos a decisiones que importan.</h1>', unsafe_allow_html=True)
+with hero_note:
+    st.markdown('<div class="hero-note">Hago que los datos complejos se vuelvan accionables.<br><span style="font-weight:400;color:#64716d">Conecto análisis, contexto y decisiones de negocio.</span></div>', unsafe_allow_html=True)
 st.markdown(
     '<p class="hero-copy">Soy Matías Fuentes, analista de datos especializado en Business Intelligence y Marketing Analytics. Conecto SQL, Python y dashboards para transformar datos crudos en métricas accionables de rentabilidad, conversión y retención.</p>',
     unsafe_allow_html=True,
 )
-hero_left, hero_right = st.columns([1.5, 1], gap="large")
-with hero_left:
-    st.link_button("Explorar proyectos ↓", "#proyectos", use_container_width=False)
-with hero_right:
-    st.markdown('<div class="hero-note">Del dato crudo a la decisión.<br><span style="font-weight:400;color:#64716d">La herramienta es el medio; el impacto es el resultado.</span></div>', unsafe_allow_html=True)
+st.link_button("Explorar proyectos ↓", "#proyectos", use_container_width=False)
 
 st.markdown(
     '<div class="stats"><div><span class="stat-number">144K+</span><span class="stat-label">respuestas analizadas</span></div><div><span class="stat-number">$1.39M</span><span class="stat-label">en pérdidas detectadas</span></div><div><span class="stat-number">500K+</span><span class="stat-label">transacciones modeladas</span></div><div><span class="stat-number">80%</span><span class="stat-label">del churn en el mes 1</span></div></div>',
