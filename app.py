@@ -9,15 +9,32 @@ st.set_page_config(
     layout="wide",
 )
 
-# Seccion de encabezado: Posicionamiento profesional y contacto directo
+# 🛠️ 1. DEFINICIÓN DE LA FUNCIÓN PARA LAS BADGES (Insertada al inicio)
+def render_stack_badges(stack: list[str]):
+    badges_html = " ".join(
+        f'<span style="display: inline-block; background-color:#1e293b; color:#e2e8f0; '
+        f'padding:4px 12px; border-radius:12px; font-size:0.8rem; margin-right:6px; '
+        f'margin-bottom:6px; font-family: monospace;">{tool}</span>'
+        for tool in stack
+    )
+    # Metemos un envoltorio div para controlar el espaciado vertical
+    st.markdown(f'<div style="margin-top: 8px; margin-bottom: 12px;">{badges_html}</div>', unsafe_allow_html=True)
+
+
+# Sección de encabezado: Posicionamiento profesional y contacto directo
 st.title("Matías Fuentes")
-st.subheader("Data-Driven Strategy & Behavioral Insights") # Título más agresivo
+st.markdown("#### Analista de Datos · Business Intelligence & Marketing Analytics")
+st.caption("SQL · Power BI · BigQuery · Python · Looker Studio · GA4")
 
 st.markdown("""
-**Auditoría de Microdatos | Optimización de Rentabilidad | Arquitectura de Decisión.**
-Portfolio de proyectos estratégicos enfocados en detectar fugas de capital, ineficiencias estructurales 
-y patrones de comportamiento financiero.
-""")
+<style>
+    div[data-testid="stImage"] img {
+        max-height: 280px;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+</style>
+""", unsafe_allow_html=True)
 
 col1, col2, col3 = st.columns(3)
 with col1:
@@ -30,7 +47,6 @@ with col3:
 st.divider()
 
 # Renderizado de proyectos: Jerarquía de información basada en la Respuesta Primero (Minto Pyramid)
-# Se prioriza el hallazgo de negocio y la evidencia visual antes que el contexto metodológico.
 cols = st.columns(2)
 
 for i, proyecto in enumerate(PROJECTS):
@@ -49,7 +65,9 @@ for i, proyecto in enumerate(PROJECTS):
 
             # Metodología, alcance y stack tecnológico (Contexto)
             st.write(proyecto["resumen"])
-            st.caption(f"**Stack Técnico:** {' · '.join(proyecto['stack'])}")
+            
+            # 🛠️ 2. REEMPLAZO DEL ST.CAPTION POR LAS BADGES INTERACTIVAS
+            render_stack_badges(proyecto["stack"])
 
             # Acceso a repositorios de auditoría y reportes de alta resolución
             btn_col1, btn_col2 = st.columns(2)
