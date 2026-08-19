@@ -85,6 +85,6 @@ PROJECTS = [
         ),
         "stack": ["BigQuery", "SQL", "Power BI"],
         "github_url": "https://github.com/Matias-Fuentes1/ecommerce-data-warehouse-sql",  
-        "dashboard_url": "📥 Descargar Reporte (.pbix) — requiere Power BI Desktop (gratis)",  
+        "dashboard_url": "",  
     },
 ]
