@@ -65,7 +65,7 @@ photo_path = Path(__file__).parent / "foto.jpg"
 photo_data = base64.b64encode(photo_path.read_bytes()).decode() if photo_path.exists() else ""
 brand_mark = f'<img src="data:image/jpeg;base64,{photo_data}" alt="" />' if photo_data else "MF"
 
-# Definimos las rutas de los CVs
+# Rutas de los CVs apuntando a assets
 cv_marketing_path = Path(__file__).parent / "assets" / "Fuentes_Matias_cv.pdf"
 cv_bi_path = Path(__file__).parent / "assets" / "Matias_Fuentes_cv.pdf"
 
@@ -143,8 +143,9 @@ for index, project in enumerate(filtered_projects):
         st.markdown("<br>", unsafe_allow_html=True)
 
 st.markdown("<br><br>", unsafe_allow_html=True)
-st.markdown('<div id="contacto" class="contact-heading"><div class="eyebrow">HABLEMOS</div><h2>Transformemos datos en decisiones.</h2></div>', unsafe_allow_html=True)
-st.markdown('<p class="hero-copy contact-copy">Estoy disponible para colaborar en proyectos de Business Intelligence, análisis de datos, automatización de procesos, visualización de información e inteligencia artificial.</p>', unsafe_allow_html=True)
+st.markdown('<div id="contacto" class="contact-heading"><div class="eyebrow">HABLEMOS</div><h2>¿Charlamos?</h2></div>', unsafe_allow_html=True)
+st.markdown('<p class="hero-copy contact-copy">Estoy disponible para sumarme a proyectos de Business Intelligence, Marketing Analytics y análisis de datos — desde armar el dashboard hasta entender qué hay detrás del número.</p>', unsafe_allow_html=True)
+
 contact_columns = st.columns(3)
 with contact_columns[0]:
     st.link_button("LinkedIn", "https://www.linkedin.com/in/matiasfuentes1/", use_container_width=True)
