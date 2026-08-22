@@ -65,6 +65,10 @@ photo_path = Path(__file__).parent / "foto.jpg"
 photo_data = base64.b64encode(photo_path.read_bytes()).decode() if photo_path.exists() else ""
 brand_mark = f'<img src="data:image/jpeg;base64,{photo_data}" alt="" />' if photo_data else "MF"
 
+# Definimos las rutas de los CVs
+cv_marketing_path = Path(__file__).parent / "Fuentes_Matias_cv.pdf"
+cv_bi_path = Path(__file__).parent / "Matias_Fuentes_cv.pdf"
+
 header_columns = st.columns([2.8, 7.2], gap="small")
 with header_columns[0]:
     st.markdown(
@@ -72,10 +76,20 @@ with header_columns[0]:
         unsafe_allow_html=True,
     )
 with header_columns[1]:
-    st.markdown(
-        '<nav class="site-nav"><div class="nav-links"><a href="#inicio">Inicio</a><a href="#sobre-mi">Sobre mí</a><a href="#experiencia">Experiencia</a><a href="#proyectos">Casos de éxito</a><a href="#contacto">Contacto</a></div></nav>',
-        unsafe_allow_html=True,
-    )
+    navigation_columns = st.columns([7.1, 2.9], gap="small")
+    with navigation_columns[0]:
+        st.markdown(
+            '<nav class="site-nav"><div class="nav-links"><a href="#inicio">Inicio</a><a href="#sobre-mi">Sobre mí</a><a href="#experiencia">Experiencia</a><a href="#proyectos">Casos de éxito</a><a href="#contacto">Contacto</a></div></nav>',
+            unsafe_allow_html=True,
+        )
+    with navigation_columns[1]:
+        cv_columns = st.columns(2, gap="small")
+        with cv_columns[0]:
+            if cv_marketing_path.exists():
+                st.download_button("CV Marketing", cv_marketing_path.read_bytes(), file_name="Matias_Fuentes_CV_Marketing_Analytics.pdf", mime="application/pdf", use_container_width=True)
+        with cv_columns[1]:
+            if cv_bi_path.exists():
+                st.download_button("CV BI", cv_bi_path.read_bytes(), file_name="Matias_Fuentes_CV_Business_Intelligence.pdf", mime="application/pdf", use_container_width=True)
 
 st.markdown('<div id="inicio" class="topline"><span>Olavarría, AR · Disponible para proyectos</span></div>', unsafe_allow_html=True)
 hero_title, hero_note = st.columns([1.45, 1], gap="large")
