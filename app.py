@@ -143,7 +143,7 @@ for index, project in enumerate(filtered_projects):
         st.markdown("<br>", unsafe_allow_html=True)
 
 st.markdown("<br><br>", unsafe_allow_html=True)
-st.markdown('<div id="contacto" class="contact-heading"><div class="eyebrow">HABLEMOS</div><h2>¿Charlamos?</h2></div>', unsafe_allow_html=True)
+st.markdown('<div id="contacto" class="contact-heading"><div class="eyebrow">CONTACTO</div><h2>¿Charlamos?</h2></div>', unsafe_allow_html=True)
 st.markdown('<p class="hero-copy contact-copy">Estoy disponible para sumarme a proyectos de Business Intelligence, Marketing Analytics y análisis de datos — desde armar el dashboard hasta entender qué hay detrás del número.</p>', unsafe_allow_html=True)
 
 contact_columns = st.columns(3)
