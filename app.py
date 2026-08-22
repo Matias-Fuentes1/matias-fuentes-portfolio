@@ -66,8 +66,8 @@ photo_data = base64.b64encode(photo_path.read_bytes()).decode() if photo_path.ex
 brand_mark = f'<img src="data:image/jpeg;base64,{photo_data}" alt="" />' if photo_data else "MF"
 
 # Definimos las rutas de los CVs
-cv_marketing_path = Path(__file__).parent / "Fuentes_Matias_cv.pdf"
-cv_bi_path = Path(__file__).parent / "Matias_Fuentes_cv.pdf"
+cv_marketing_path = Path(__file__).parent / "assets" / "Fuentes_Matias_cv.pdf"
+cv_bi_path = Path(__file__).parent / "assets" / "Matias_Fuentes_cv.pdf"
 
 header_columns = st.columns([2.8, 7.2], gap="small")
 with header_columns[0]:
