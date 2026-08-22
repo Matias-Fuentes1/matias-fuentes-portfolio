@@ -7,20 +7,20 @@
  
 PROJECTS = [
     {
-        "titulo": "Brechas de Ahorro e Inclusión Financiera en Brasil",
-        "categoria": "BI",
+        "titulo": "Performance de Canales y Embudo de Conversión — Google Merchandise Store",
+        "categoria": "Marketing",
         "resumen": (
-            "Análisis de 144.000+ encuestas del Global Findex (Banco Mundial) sobre inclusión "
-            "financiera en Brasil, aplicando ponderación poblacional y controles de calidad sobre los datos."
+            "Pipeline de datos con GA4 + BigQuery para analizar el funnel de conversión "
+            "y la performance de canales de adquisición sobre 360K+ sesiones."
         ),
         "hallazgo_clave": (
-        "La brecha de ahorro por género alcanza el 28,3%, casi el mismo impacto que la brecha por ingreso. "
-        "Además, quienes tienen acceso a billeteras digitales ahorran 42 puntos porcentuales más."
+            "Cerca del 80% de los usuarios abandona antes de llegar al carrito, mientras Paid Search "
+            "rinde 27% por debajo del promedio del sitio."
         ),
-        "imagen": "assets/Interseccionalidad.png",
-        "stack": ["Python", "Pandas", "Matplotlib/Seaborn"],
-        "github_url": "https://github.com/Matias-Fuentes1/behavioral-data-audit-brazi-py", 
-        "dashboard_url": "", 
+        "imagen": "assets/dashboard_funnel.png",
+        "stack": ["BigQuery", "SQL", "Looker Studio", "GA4"],
+        "github_url": "https://github.com/Matias-Fuentes1/marketing-infrastructure-funnel-audit",
+        "dashboard_url": "https://datastudio.google.com/s/tKwvK5oybuA",
     },
     {
         "titulo": "Modelo Predictivo de Propensión de Compra",
@@ -55,20 +55,20 @@ PROJECTS = [
         "dashboard_url": "https://1drv.ms/x/c/e6bb2b6437ad3a02/IQCRO5eruw2_QK5wSJOR3IA3ARMHYr8bvef82a2T08fYxWY?e=m9peVe", 
     },
     {
-        "titulo": "Performance de Canales y Embudo de Conversión — Google Merchandise Store",
-        "categoria": "Marketing",
-        "imagen": "assets/dashboard_funnel.png",
+        "titulo": "Brechas de Ahorro e Inclusión Financiera en Brasil",
+        "categoria": "BI",
         "resumen": (
-            "Pipeline de datos con GA4 + BigQuery para analizar el funnel de conversión "
-            "y la performance de canales de adquisición sobre 360K+ sesiones."
+            "Análisis de 144.000+ encuestas del Global Findex (Banco Mundial) sobre inclusión "
+            "financiera en Brasil, aplicando ponderación poblacional y controles de calidad sobre los datos."
         ),
         "hallazgo_clave": (
-            "Cerca del 80% de los usuarios abandona antes de llegar al carrito, mientras Paid Search "
-            "rinde 27% por debajo del promedio del sitio."
+        "La brecha de ahorro por género alcanza el 28,3%, casi el mismo impacto que la brecha por ingreso. "
+        "Además, quienes tienen acceso a billeteras digitales ahorran 42 puntos porcentuales más."
         ),
-        "stack": ["BigQuery", "SQL", "Looker Studio", "GA4"],
-        "github_url": "https://github.com/Matias-Fuentes1/marketing-infrastructure-funnel-audit",  # TODO
-        "dashboard_url": "https://datastudio.google.com/s/tKwvK5oybuA", 
+        "imagen": "assets/Interseccionalidad.png",
+        "stack": ["Python", "Pandas", "Matplotlib/Seaborn"],
+        "github_url": "https://github.com/Matias-Fuentes1/behavioral-data-audit-brazi-py",
+        "dashboard_url": "",
     },
     {
         "titulo": "Retención de Clientes y Segmentación RFM",
