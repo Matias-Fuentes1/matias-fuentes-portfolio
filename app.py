@@ -57,18 +57,25 @@ def render_project(project: dict, featured: bool = False) -> None:
                 st.link_button("Dashboard", project["dashboard_url"], use_container_width=True)
 
 
+def read_pdf(path: Path) -> bytes:
+    data = path.read_bytes()
+    pdf_start = data.find(b"%PDF-")
+    if pdf_start == -1:
+        raise ValueError(f"El archivo no es un PDF válido: {path.name}")
+    return data[pdf_start:]
+
+
 styles_path = Path(__file__).parent / "styles.css"
 st.markdown(f"<style>{styles_path.read_text()}</style>", unsafe_allow_html=True)
 
 
-photo_path = Path(__file__).parent / "assets" / "foto.jpg"
+photo_path = Path(__file__).parent / "foto.jpg"
 photo_data = base64.b64encode(photo_path.read_bytes()).decode() if photo_path.exists() else ""
 brand_mark = f'<img src="data:image/jpeg;base64,{photo_data}" alt="" />' if photo_data else "MF"
-
-# Rutas de los CVs apuntando a assets
-cv_marketing_path = Path(__file__).parent / "assets" / "Fuentes_Matias_cv.pdf"
-cv_bi_path = Path(__file__).parent / "assets" / "Matias_Fuentes_cv.pdf"
-
+cv_marketing_path = Path(__file__).parent / "Fuentes_Matias_cv.pdf"
+cv_bi_path = Path(__file__).parent / "Matias_Fuentes_cv.pdf"
+cv_marketing_data = read_pdf(cv_marketing_path)
+cv_bi_data = read_pdf(cv_bi_path)
 header_columns = st.columns([2.8, 7.2], gap="small")
 with header_columns[0]:
     st.markdown(
@@ -85,12 +92,9 @@ with header_columns[1]:
     with navigation_columns[1]:
         cv_columns = st.columns(2, gap="small")
         with cv_columns[0]:
-            if cv_marketing_path.exists():
-                st.download_button("CV Marketing", cv_marketing_path.read_bytes(), file_name="Matias_Fuentes_CV_Marketing_Analytics.pdf", mime="application/pdf", use_container_width=True)
+            st.download_button("CV Marketing", cv_marketing_data, file_name="Matias_Fuentes_CV_Marketing_Analytics.pdf", mime="application/pdf", use_container_width=True)
         with cv_columns[1]:
-            if cv_bi_path.exists():
-                st.download_button("CV BI", cv_bi_path.read_bytes(), file_name="Matias_Fuentes_CV_Business_Intelligence.pdf", mime="application/pdf", use_container_width=True)
-
+            st.download_button("CV BI", cv_bi_data, file_name="Matias_Fuentes_CV_Business_Intelligence.pdf", mime="application/pdf", use_container_width=True)
 st.markdown('<div id="inicio" class="topline"><span>Olavarría, AR · Disponible para proyectos</span></div>', unsafe_allow_html=True)
 hero_title, hero_note = st.columns([1.45, 1], gap="large")
 with hero_title:
@@ -102,9 +106,8 @@ with hero_title:
     st.markdown('<a class="project-cta" href="#proyectos">Explorar proyectos ↓</a>', unsafe_allow_html=True)
 with hero_note:
     st.markdown('<div class="metric-panel"><div class="metric-panel-heading"><span>Áreas de análisis</span><b>● Disponible para nuevas oportunidades</b></div><h3>Del diagnóstico a la acción</h3><div class="focus-grid"><div class="focus-card"><span>▥ Business Intelligence</span><strong>KPIs · Dashboards</strong><div class="chart-bars"><i></i><i></i><i></i><i></i><i></i></div></div><div class="focus-card"><span>⌁ Marketing</span><strong>Funnel Analytics</strong><div class="chart-funnel"><i></i><i></i><i></i><i></i></div></div><div class="focus-card"><span>♧ Clientes</span><strong>Cohort Analysis</strong><div class="chart-grid"><i></i><i></i><i></i><i></i><i></i><i></i></div></div><div class="focus-card"><span>◌ Data Science</span><strong>Predictive Models</strong><div class="chart-line"><i></i><i></i><i></i><i></i><i></i></div></div></div></div>', unsafe_allow_html=True)
-
 st.markdown(
-    '<div class="stats"><div><span class="stat-icon">▥</span><span class="stat-number">144K+</span><span class="stat-label">respuestas analizadas</span></div><div><span class="stat-icon">$</span><span class="stat-number">$1.39M</span><span class="stat-label">en pérdidas detectadas</span></div><div><span class="stat-icon">⇄</span><span class="stat-number">500K+</span><span class="stat-label">transacciones modeladas</span></div><div><span class="stat-icon">↘</span><span class="stat-number">80%</span><span class="stat-label">del churn en el mes 1</span></div></div>',
+    '<div class="stats"><div><span class="stat-icon">◉</span><span class="stat-number">Paid Media</span><span class="stat-label">inversión vs. retorno</span></div><div><span class="stat-icon">▥</span><span class="stat-number">144K+</span><span class="stat-label">respuestas analizadas</span></div><div><span class="stat-icon">$</span><span class="stat-number">$1.39M</span><span class="stat-label">en pérdidas detectadas</span></div><div><span class="stat-icon">⇄</span><span class="stat-number">500K+</span><span class="stat-label">transacciones modeladas</span></div><div><span class="stat-icon">↘</span><span class="stat-number">80%</span><span class="stat-label">del churn en el mes 1</span></div></div>',
     unsafe_allow_html=True,
 )
 
@@ -130,7 +133,7 @@ selected_category = st.radio("Filtrar por disciplina", categories, horizontal=Tr
 filtered_projects = [project for project in PROJECTS if selected_category == "Todos" or project["categoria"] == selected_category]
 
 if filtered_projects and selected_category == "Todos":
-    featured_project = next((project for project in filtered_projects if project["dashboard_url"]), filtered_projects[0])
+    featured_project = filtered_projects[0]
     render_project(featured_project, featured=True)
     st.markdown("<br>", unsafe_allow_html=True)
     filtered_projects = [project for project in filtered_projects if project is not featured_project]
@@ -143,9 +146,8 @@ for index, project in enumerate(filtered_projects):
         st.markdown("<br>", unsafe_allow_html=True)
 
 st.markdown("<br><br>", unsafe_allow_html=True)
-st.markdown('<div id="contacto" class="contact-heading"><div class="eyebrow">CONTACTO</div><h2>¿Charlamos?</h2></div>', unsafe_allow_html=True)
-st.markdown('<p class="hero-copy contact-copy">Estoy disponible para sumarme a proyectos de Business Intelligence, Marketing Analytics y análisis de datos — desde armar el dashboard hasta entender qué hay detrás del número.</p>', unsafe_allow_html=True)
-
+st.markdown('<div id="contacto" class="contact-heading"><div class="eyebrow">HABLEMOS</div><h2>Transformemos datos en decisiones.</h2></div>', unsafe_allow_html=True)
+st.markdown('<p class="hero-copy contact-copy">Estoy disponible para colaborar en proyectos de Business Intelligence, análisis de datos, automatización de procesos, visualización de información e inteligencia artificial.</p>', unsafe_allow_html=True)
 contact_columns = st.columns(3)
 with contact_columns[0]:
     st.link_button("LinkedIn", "https://www.linkedin.com/in/matiasfuentes1/", use_container_width=True)
