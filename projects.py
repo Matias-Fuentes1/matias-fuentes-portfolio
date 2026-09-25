@@ -7,6 +7,23 @@
  
 PROJECTS = [
     {
+        "titulo": "Performance y Optimización de Paid Media",
+        "categoria": "Marketing",
+        "resumen": (
+            "Análisis de campañas de paid media para comparar inversión, alcance, conversiones y retorno, "
+            "normalizando los datos de las plataformas para construir una lectura consistente del funnel."
+        ),
+        "hallazgo_clave": (
+            "El dashboard permite separar volumen de eficiencia: las campañas con mayor inversión no son necesariamente "
+            "las que mejor convierten, por lo que la optimización debe priorizar el costo por resultado y el retorno "
+            "antes que el alcance aislado."
+        ),
+        "imagen": "assets/dashboard_paid_media.png",
+        "stack": ["Python (ETL/normalización)", "SQL", "Power BI (modelo dimensional, DAX)"],
+        "github_url": "https://github.com/Matias-Fuentes1/global-ads-performance-paid-media",
+        "dashboard_url": "https://github.com/Matias-Fuentes1/global-ads-performance-paid-media/blob/main/power_bi/screenshot_dashboard.png",
+    },
+    {
         "titulo": "Performance de Canales y Embudo de Conversión — Google Merchandise Store",
         "categoria": "Marketing",
         "resumen": (
