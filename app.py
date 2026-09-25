@@ -74,8 +74,8 @@ photo_data = base64.b64encode(photo_path.read_bytes()).decode() if photo_path.ex
 brand_mark = f'<img src="data:image/jpeg;base64,{photo_data}" alt="" />' if photo_data else "MF"
 cv_marketing_path = Path(__file__).parent / "Fuentes_Matias_cv.pdf"
 cv_bi_path = Path(__file__).parent / "Matias_Fuentes_cv.pdf"
-cv_marketing_data = read_pdf(cv_marketing_path)
-cv_bi_data = read_pdf(cv_bi_path)
+cv_marketing_data = read_pdf(cv_marketing_path) if cv_marketing_path.exists() else None
+cv_bi_data = read_pdf(cv_bi_path) if cv_bi_path.exists() else None
 header_columns = st.columns([2.8, 7.2], gap="small")
 with header_columns[0]:
     st.markdown(
@@ -92,9 +92,11 @@ with header_columns[1]:
     with navigation_columns[1]:
         cv_columns = st.columns(2, gap="small")
         with cv_columns[0]:
-            st.download_button("CV Marketing", cv_marketing_data, file_name="Matias_Fuentes_CV_Marketing_Analytics.pdf", mime="application/pdf", use_container_width=True)
+            if cv_marketing_data:
+                st.download_button("CV Marketing", cv_marketing_data, file_name="Matias_Fuentes_CV_Marketing_Analytics.pdf", mime="application/pdf", use_container_width=True)
         with cv_columns[1]:
-            st.download_button("CV BI", cv_bi_data, file_name="Matias_Fuentes_CV_Business_Intelligence.pdf", mime="application/pdf", use_container_width=True)
+            if cv_bi_data:
+                st.download_button("CV BI", cv_bi_data, file_name="Matias_Fuentes_CV_Business_Intelligence.pdf", mime="application/pdf", use_container_width=True)
 st.markdown('<div id="inicio" class="topline"><span>Olavarría, AR · Disponible para proyectos</span></div>', unsafe_allow_html=True)
 hero_title, hero_note = st.columns([1.45, 1], gap="large")
 with hero_title:
