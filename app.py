@@ -79,7 +79,7 @@ styles_path = Path(__file__).parent / "styles.css"
 st.markdown(f"<style>{styles_path.read_text()}</style>", unsafe_allow_html=True)
 
 
-photo_path = Path(__file__).parent / "foto.jpg"
+photo_path = Path(__file__).parent / "assets" / "foto.jpg"
 photo_data = base64.b64encode(photo_path.read_bytes()).decode() if photo_path.exists() else ""
 brand_mark = f'<img src="data:image/jpeg;base64,{photo_data}" alt="" />' if photo_data else "MF"
 cv_marketing_path = find_asset("Fuentes_Matias_cv.pdf")
@@ -167,3 +167,4 @@ with contact_columns[1]:
 	st.link_button("GitHub", "https://github.com/Matias-Fuentes1", use_container_width=True)
 with contact_columns[2]:
 	st.link_button("Enviar email", "mailto:matifuentes742@gmail.com", use_container_width=True)
+
